@@ -43,6 +43,10 @@ sudo python3 EtherShade.py --target 192.168.1.10 --gateway 192.168.1.1
 # 4. Disable IP forwarding (recommended after the attack)
 sudo sysctl -w net.ipv4.ip_forward=0
 
+#5. Verify status
+cat /proc/sys/net/ipv4/ip_forward
+
+
 ```
 🔒 Disclaimer
 This tool is intended for educational purposes only. Unauthorized use on networks you do not own or have permission to test is illegal and unethical.
