@@ -1,48 +1,50 @@
-# 🛠️ ARP Spoofing Tool
+# 🕷️ ARP Spoofing Tool
 
-A lightweight and educational ARP spoofing script built with Python and Scapy. This tool allows you to perform ARP poisoning attacks by impersonating the gateway or a target device on a local network.
-
----
-
-## 📋 Features
-
-* Sends forged ARP replies to poison ARP cache.
-* Supports restoring ARP tables when stopped (CTRL+C).
-* Displays real-time packet count.
-* Fully modular structure (network and console utilities separated).
+A lightweight Python tool for performing ARP spoofing attacks using Scapy. It targets a victim and a gateway to become a man-in-the-middle (MITM), allowing packet interception on a local network. The tool also restores the ARP tables after interruption and supports IP forwarding for full packet relay.
 
 ---
 
-## ⚙️ Requirements
+## 📦 Features
 
-* Python 3.x
-* Scapy library (`pip install scapy`)
-* Root privileges (for sending raw packets)
+- Sends crafted ARP replies to poison the ARP cache of the target and gateway
+- Supports two-way spoofing (victim <-> gateway)
+- Automatically restores ARP tables on exit
+- Displays live spoofing status
+- Clean and readable Python codebase
+- Includes IP forwarding toggle instructions
 
 ---
 
-## 🚀 How to Use
+## 🔧 Requirements
 
-# 1. Enable IP forwarding (required for ARP spoofing to relay traffic)
+- Python 3.x  
+- Scapy library (`pip install scapy`)
+- Root privileges (required to send raw packets)
+- Linux system (recommended)
+
+---
+
+## ⚙️ How to Use
+
+```bash
+# 1. Enable IP forwarding (required for traffic to pass through your machine)
+
 sudo sysctl -w net.ipv4.ip_forward=1
 
 # 2. Run the attack
-sudo python3 main.py --target <TARGET_IP> --gateway <GATEWAY_IP>
+sudo python3 EtherShade.py --target <TARGET_IP> --gateway <GATEWAY_IP>
 
 # Example:
-sudo python3 main.py --target 192.168.1.10 --gateway 192.168.1.1
+sudo python3 EtherShade.py --target 192.168.1.10 --gateway 192.168.1.1
 
-# 3. When you stop the program (Ctrl+C), it will automatically restore the ARP tables.
-# 4. Disable IP forwarding after the attack (recommended for safety)
+# 3. Stop the attack with Ctrl+C
+# The script will automatically restore the ARP tables of both the target and the gateway.
+
+# 4. Disable IP forwarding (recommended after the attack)
 sudo sysctl -w net.ipv4.ip_forward=0
 
+```
+🔒 Disclaimer
+This tool is intended for educational purposes only. Unauthorized use on networks you do not own or have permission to test is illegal and unethical.
 
-This will begin sending spoofed ARP packets to both the target and the gateway every 2 seconds.
 
-To stop the attack and restore the network, press `CTRL+C`.
-
----
-
-## 🔒 Disclaimer
-
-This tool is for **educational** and **ethical hacking** purposes only. Always ensure you have **explicit permission** to test a network.
