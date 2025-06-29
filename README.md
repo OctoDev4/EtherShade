@@ -1,6 +1,7 @@
 # 🕷️ ARP Spoofing Tool
 
 A lightweight Python tool for performing ARP spoofing attacks using Scapy. It targets a victim and a gateway to become a man-in-the-middle (MITM), allowing packet interception on a local network. The tool also restores the ARP tables after interruption and supports IP forwarding for full packet relay.
+![Image](https://github.com/user-attachments/assets/f868a627-0198-4223-9ec8-b9d946c7d39c)
 
 ---
 
