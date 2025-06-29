@@ -23,15 +23,19 @@ A lightweight and educational ARP spoofing script built with Python and Scapy. T
 
 ## 🚀 How to Use
 
-```bash
-sudo python3 EtherShade.py --target <TARGET_IP> --gateway <GATEWAY_IP>
-```
+# 1. Enable IP forwarding (required for ARP spoofing to relay traffic)
+sudo sysctl -w net.ipv4.ip_forward=1
 
-**Example:**
+# 2. Run the attack
+sudo python3 main.py --target <TARGET_IP> --gateway <GATEWAY_IP>
 
-```bash
-sudo python3 EtherShade.py --target 192.168.1.10 --gateway 192.168.1.1
-```
+# Example:
+sudo python3 main.py --target 192.168.1.10 --gateway 192.168.1.1
+
+# 3. When you stop the program (Ctrl+C), it will automatically restore the ARP tables.
+# 4. Disable IP forwarding after the attack (recommended for safety)
+sudo sysctl -w net.ipv4.ip_forward=0
+
 
 This will begin sending spoofed ARP packets to both the target and the gateway every 2 seconds.
 
